@@ -7,7 +7,7 @@ import {
 	genericErrorHandler,
 } from './middlewares/error.middleware';
 import logger from './config/logger.config';
-import { attachCorrelationIdMiddleware } from './middlewares/correlation.middleware';
+
 import { connectDB } from './config/db';
 const app = express();
 
@@ -17,7 +17,6 @@ app.use(express.json());
  * Registering all the routers and their corresponding routes with out app server object.
  */
 
-app.use(attachCorrelationIdMiddleware);
 app.use('/api/v1', v1Router);
 app.use('/api/v2', v2Router);
 
