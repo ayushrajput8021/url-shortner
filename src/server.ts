@@ -9,6 +9,7 @@ import {
 import logger from './config/logger.config';
 
 import { connectDB } from './config/db';
+import { initRedis } from './config/redis';
 const app = express();
 
 app.use(express.json());
@@ -27,8 +28,9 @@ app.use('/api/v2', v2Router);
 app.use(appErrorHandler);
 app.use(genericErrorHandler);
 
-app.listen(serverConfig.PORT, () => {
+app.listen(serverConfig.PORT, async () => {
 	logger.info(`Server is running on http://localhost:${serverConfig.PORT}`);
 	logger.info(`Press Ctrl+C to stop the server.`);
-	connectDB();
+	await connectDB();
+	await initRedis();
 });
