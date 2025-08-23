@@ -6,8 +6,8 @@ import { NotFoundError } from '../utils/errors/app.error';
 
 export class UrlService {
 	constructor(
-		private readonly cacheRepo: CacheRepository,
-		private readonly urlRepository: UrlRepository
+		private readonly urlRepository: UrlRepository,
+		private readonly cacheRepo: CacheRepository
 	) {}
 
 	async createShortUrl(originalUrl: string) {

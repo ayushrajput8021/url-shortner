@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@trpc/server':
+        specifier: ^11.5.0
+        version: 11.5.0(typescript@5.9.2)
       dotenv:
         specifier: ^16.4.7
         version: 16.6.1
@@ -102,6 +105,11 @@ packages:
     engines: {node: '>= 18'}
     peerDependencies:
       '@redis/client': ^5.8.2
+
+  '@trpc/server@11.5.0':
+    resolution: {integrity: sha512-0IBtkmUCeO2ycn4K45/cqsujnlCQrSvkCo7lFDpg3kGMIPiLyLRciID5IiS7prEjRjeITa+od2aaHTIwONApVw==}
+    peerDependencies:
+      typescript: '>=5.7.2'
 
   '@tsconfig/node10@1.0.11':
     resolution: {integrity: sha512-DcRjDCujK/kCk/cUe8Xz8ZSpm8mS3mNNpta+jGCA6USEDfktlNvm1+IuZ9eTcDbNk41BHwpHHeW+N1lKCz4zOw==}
@@ -816,6 +824,10 @@ snapshots:
   '@redis/time-series@5.8.2(@redis/client@5.8.2)':
     dependencies:
       '@redis/client': 5.8.2
+
+  '@trpc/server@11.5.0(typescript@5.9.2)':
+    dependencies:
+      typescript: 5.9.2
 
   '@tsconfig/node10@1.0.11': {}
 
