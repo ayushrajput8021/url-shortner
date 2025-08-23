@@ -52,4 +52,7 @@ export class UrlService {
 		});
 		return urlDoc.originalUrl;
 	}
+	async incrementClicks(shortUrl: string): Promise<void> {
+		await this.urlRepository.incrementClicks(shortUrl);
+	}
 }

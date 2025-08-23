@@ -25,10 +25,10 @@ export const urlController = {
 			}
 		}),
 
-	getOriginal: publicProcedure
+	getOriginalUrl: publicProcedure
 		.input(
 			z.object({
-				shortUrl: z.string().nonempty('Short URL is required'),
+				shortUrl: z.string(),
 			})
 		)
 		.query(async ({ input }) => {
