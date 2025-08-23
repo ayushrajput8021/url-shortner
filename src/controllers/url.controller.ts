@@ -1,5 +1,6 @@
 import z from 'zod';
 import logger from '../config/logger.config';
+import { Request, Response } from 'express';
 import { publicProcedure } from '../routers/trpc/context';
 import { InternalServerError, NotFoundError } from '../utils/errors/app.error';
 import { CacheRepository } from '../repositories/cache.repo';
@@ -44,3 +45,19 @@ export const urlController = {
 			}
 		}),
 };
+
+export async function redirectUrl(req: Request, res: Response): Promise<void> {
+	try {
+		const shortUrl = req.params.shortUrl;
+		const originalUrl = await urlService.getOriginalUrl(shortUrl);
+		if (!originalUrl) {
+			throw new NotFoundError('Short URL not found');
+		}
+		res.redirect(originalUrl);
+	} catch (error) {
+		logger.error('Error during URL redirection:', error);
+		throw error instanceof NotFoundError
+			? error
+			: new InternalServerError('Failed to redirect URL');
+	}
+}
